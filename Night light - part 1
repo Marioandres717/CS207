@@ -1,0 +1,34 @@
+//constants for this sketch
+const int ledPin = 11;
+const int potPin = A2;
+
+// variables for this sketch
+int pot_value;
+int frequency;
+
+void setup()
+{
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+
+
+void loop()
+{
+  //read voltage from the potentiometer
+  pot_value = analogRead(potPin);
+  Serial.print("\t");
+  Serial.println(pot_value);
+  
+  //Set a LED on/off threshold where the potentiometer passes the mid-point
+ if (pot_value < 750)
+  {
+    digitalWrite(ledPin, HIGH);
+ }
+  else
+ {
+    digitalWrite(ledPin, LOW);
+  }
+ 
+}
