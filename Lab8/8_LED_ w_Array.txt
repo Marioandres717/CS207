@@ -1,0 +1,62 @@
+  //LED Pin Variables
+   int ledPins[] = {2,3,4,5,6,7,8,9}; //An array to hold the pin each LED is connected to
+
+   int pattern1[] = {HIGH,LOW,HIGH,LOW, HIGH, LOW, HIGH, LOW};
+   int pattern2[] = {LOW,HIGH,LOW,HIGH, LOW, HIGH, LOW, HIGH};
+   int pattern3[] = {HIGH,LOW,HIGH,LOW, HIGH, HIGH, LOW, HIGH};
+   int pattern4[] = {LOW,HIGH,LOW,HIGH, LOW, LOW, HIGH, HIGH};
+                               
+   void setup()
+   {
+     
+     //Set each pin connected to an LED to output mode (pulling high (on) or low (off)
+     for(int i = 0; i < 8; i++){         //this is a loop and will repeat eight times
+         pinMode(ledPins[i],OUTPUT); //we use this to set each LED pin to output
+     }                                   //the code this replaces is below
+    
+   }
+     
+   void loop()                   
+   {
+        //this will turn on each LED one by one then turn each off
+        //larsonScanner();
+        makePattern(ledPins, pattern1, 8, 200);
+        makePattern(ledPins, pattern2, 8, 1000);
+        makePattern(ledPins, pattern3, 8, 2000);
+        makePattern(ledPins, pattern4, 8, 3000);
+   }
+
+
+void makePattern(int leds[], int pattern[], int num, int Delay)
+   {
+     for(int i = 0; i < num; i++)
+     {
+       digitalWrite(leds[i], pattern[i]); 
+     }
+     delay(Delay);
+   }
+
+
+
+//   void larsonScanner(){     
+//
+//    for(int i = 0; i <= 7; i++){
+//    int offLED = i - 1;  //Calculate which LED was turned on last time through
+//    if(i == 0) {         //for i = 1 to 7 this is i minus 1 (i.e. if i = 2 we will
+//      offLED = 1;        //turn on LED 2 and off LED 1)
+//    }                    //however if i = 0 we don't want to turn of led -1 (doesn't exist)
+//                         //instead we turn off LED 7, (looping around)
+//    digitalWrite(ledPins[i], HIGH);     //turn on LED #i
+//    digitalWrite(ledPins[offLED], LOW); //turn off the LED we turned on last time
+//    delay(200);
+//  }
+//  
+//  for(int i = 6; i >= 1; i--){
+//    int offLED = i + 1;
+//    digitalWrite(ledPins[i], HIGH);     //turn on LED #i
+//    digitalWrite(ledPins[offLED], LOW); //turn off the LED we turned on last time
+//    delay(200);
+//  }
+  //digitalWrite(ledPins[1], LOW);
+    
+ //}; 
